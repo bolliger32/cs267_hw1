@@ -8,11 +8,10 @@
 #LDFLAGS = -Wall
 # librt is needed for clock_gettime
 #LDLIBS = -lrt   #for NERSC
-#LDLIBS = -framework Accelerate  #for local MacOS
 
 # for running on MacOS
 CC = gcc 
-OPT = -O1
+OPT = -O3
 CFLAGS = -Wall -std=gnu99 $(OPT)
 LDFLAGS = -Wall
 LDLIBS = -framework Accelerate  #for local MacOS
