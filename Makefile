@@ -2,18 +2,18 @@
 # This makefile is intended for the GNU C compiler. To change compilers, you need to type something like: "module swap PrgEnv-pgi PrgEnv-gnu" See the NERSC documentation for available compilers.
 
 # for running on NERSC
-#CC = cc 
-#OPT = -fast -no-ipo -qopt-report=3 -qopt-report-phase=vec -qopt-report-file=vectReport.txt
-#CFLAGS = -Wall -std=gnu99 $(OPT)
-#LDFLAGS = -Wall
-#LDLIBS = -lrt   #for NERSC
-
-# for running on MacOS
-CC = gcc 
-OPT = -O3
+CC = cc 
+OPT = -fast -no-ipo -qopt-report=3 -qopt-report-phase=vec -qopt-report-file=vectReport.txt
 CFLAGS = -Wall -std=gnu99 $(OPT)
 LDFLAGS = -Wall
-LDLIBS = -framework Accelerate  #for local MacOS
+LDLIBS = -lrt   #for NERSC
+
+# for running on MacOS
+#CC = gcc 
+#OPT = -O3
+#CFLAGS = -Wall -std=gnu99 $(OPT)
+#LDFLAGS = -Wall
+#LDLIBS = -framework Accelerate  #for local MacOS
 
 targets = benchmark-naive benchmark-blocked benchmark-blas
 objects = benchmark.o dgemm-naive.o dgemm-blocked.o dgemm-blas.o  
