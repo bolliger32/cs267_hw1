@@ -13,10 +13,6 @@
 
 #define MAX_SPEED 19.2 // defining Max Gflops/s per core on Edison.
 
-// define block size
-const int M_BLOCK_SIZE = 64;
-const int N_BLOCK_SIZE = 64;
-
 /* reference_dgemm wraps a call to the BLAS-3 routine DGEMM, via the standard FORTRAN interface - hence the reference semantics. */ 
 #define DGEMM dgemm_
 extern void DGEMM (char*, char*, int*, int*, int*, double*, double*, int*, double*, int*, double*, double*, int*); 
@@ -97,9 +93,9 @@ int main (int argc, char **argv)
   double per[nsizes],aveper;
 
   /* loop through block size options */
-  short m_block_sizes[] = {2,4,8,16,32,64,128,256,512,1024,2048};
+  short m_block_sizes[] = {4,8,16,32,64,128,256};
 
-  short n_block_sizes[] = {2048,1024,512,256,128,64,32,16,8,4,2};
+  short n_block_sizes[] = {256,128,64,32,16,8,4};
   for (int bl = 0; bl < sizeof(m_block_sizes)/sizeof(short); bl++)
 //    for (int nbl = 0; nbl < sizeof(block_sizes); nbl++)
     {
