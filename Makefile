@@ -6,7 +6,6 @@
 #OPT = -fast -no-ipo -qopt-report=3 -qopt-report-phase=vec -qopt-report-file=vectReport.txt
 #CFLAGS = -Wall -std=gnu99 $(OPT)
 #LDFLAGS = -Wall
-# librt is needed for clock_gettime
 #LDLIBS = -lrt   #for NERSC
 
 # for running on MacOS
@@ -31,7 +30,7 @@ benchmark-blocked : benchmark.o dgemm-blocked.o
 	$(CC) -o $@ $^ $(LDLIBS)
 benchmark-blas : benchmark.o dgemm-blas.o
 	$(CC) -o $@ $^ $(LDLIBS)
-test-block-sizes : test-block-sizes.o dgemm-blocked.o
+test-block-sizes : test-block-sizes.o dgemm-blocked_2-rect_blocks.o
 	$(CC) -o $@ $^ $(LDLIBS)
 
 %.o : %.c

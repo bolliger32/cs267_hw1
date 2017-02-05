@@ -36,3 +36,5 @@ benchmark-blas
 benchmark-blocked
 
 benchmark-naive
+
+test-block-sizes
