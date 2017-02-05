@@ -31,6 +31,8 @@ benchmark-blocked : benchmark.o dgemm-blocked.o
 	$(CC) -o $@ $^ $(LDLIBS)
 benchmark-blas : benchmark.o dgemm-blas.o
 	$(CC) -o $@ $^ $(LDLIBS)
+test-block-sizes : test-block-sizes.o dgemm-blocked.o
+	$(CC) -o $@ $^ $(LDLIBS)
 
 %.o : %.c
 	$(CC) -c $(CFLAGS) $<
